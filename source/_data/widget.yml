@@ -1,0 +1,41 @@
+# 侧栏自定义卡片
+# Butterfly 内置机制：site.data.widget
+#   top    -> 显示在资料卡、公告卡之后（推荐）
+#   bottom -> 显示在侧栏最底部
+# 每一项字段：class_name / id_name / name / icon / html
+# 图标去 https://fontawesome.com/search 找，复制 class 填到 icon
+
+top:
+  - class_name: card-skill
+    id_name: card-skill
+    name: 我的技能
+    icon: fas fa-tools
+    html: |
+      <div class="ly-sec">
+      <div class="ly-sec-t">内容创作</div>
+      <div class="ly-tags"><span class="ly-tag">拍摄</span><span class="ly-tag">剪辑</span><span class="ly-tag">老机器测评</span></div>
+      </div>
+      <div class="ly-sec">
+      <div class="ly-sec-t">文字</div>
+      <div class="ly-tags"><span class="ly-tag">写作</span><span class="ly-tag">排版</span></div>
+      </div>
+      <div class="ly-sec">
+      <div class="ly-sec-t">语言</div>
+      <div class="ly-tags"><span class="ly-tag">中文</span><span class="ly-tag">English</span></div>
+      </div>
+
+  - class_name: card-device
+    id_name: card-device
+    name: 我的设备
+    icon: fas fa-laptop
+    html: |
+      <div class="ly-dev">
+      <div class="ly-dev-i">
+      <div class="ly-dev-n">笔记本 · 型号待填</div>
+      <div class="ly-dev-m">系统待填</div>
+      </div>
+      <div class="ly-dev-i">
+      <div class="ly-dev-n">手机 · 型号待填</div>
+      <div class="ly-dev-m">系统待填</div>
+      </div>
+      </div>

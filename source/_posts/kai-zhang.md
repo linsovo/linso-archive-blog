@@ -8,13 +8,17 @@ categories:
 description: LiNSO ARCHIVE欢迎您来~
 ---
 
+{% note info fa-solid fa-lightbulb flat %}
+LiNSO ARCHIVE欢迎您来~
+{% endnote %}
+
 ## 开篇碎碎念
 
 从我记忆中接触互联网开始，就一直很想搭建一个属于自己的网站。从2010s的QQ空间到2020s的朋友圈也是记录了不少我的审美变迁和黑历史（捂脸）。
 
 在世界第一可爱哈士奇Siaospeed宝那里学习了一些网站搭建基础知识，于是这个网站就这样上线了！
 
-特别鸣谢：**Deepseek V4.1 Flash 1017** & **Siaospeed** & **Advanced Micro Devices, Inc.**
+特别鸣谢：**<span style="color:#4D6BFE">Deepseek V4.1 Flash 1017<span>** & **<span style="color:#14B8A6">Siaospeed<span>** & **<span style="color:#ED1C24">Advanced Micro Devices, Inc.<span>**
 
 ## 吾乃何许人也？
 
@@ -31,10 +35,10 @@ description: LiNSO ARCHIVE欢迎您来~
 - 2009年第一次接触互联网赶上了非主流末期，小时候吵着要开黄钻把自己的QQ秀染成白毛
 - 2017年拿下了全湖北第一个Scratch国奖，现在的编程水平大概也是这样
 - 2020年开始幻想自己成为K-Pop Idol于是向乐华韩国、Starship、Woollim等小公司猛投简历，对自己有较为清晰的认知
-- 2021-2025年只上了两年高中但是在最后一个月爆发了某种神秘的力量来到全世界增速第一的211
+- 2021-2025年只上了两年高中，但是在最后一个月爆发了某种神秘的力量来到全世界增速第一的211
 - 2026年很难想象我和Siaospeed是因为兄弟你也玩这个认识的
 
-## Subscribe & Update [I Confirm] [No,FXXK U]
+## Subscribe & Update
 
 大概主要更新内容是数码评测为主，偶尔会折腾一些好玩的硬件，or Any other Queer thing
 
@@ -42,13 +46,14 @@ description: LiNSO ARCHIVE欢迎您来~
 - **搭配分享**。对审美有着又土又扣但是本人觉得很牛逼的见解。例如主机配置，桌搭，EDC。
 - **日常**。不敢发到朋友圈和球球空间的东西。peer pressure真的是一个恐怖的东西啊（感叹）
 
-## 更新频率（请注意不以MHz为单位）
+## 更新频率（注意到单位不为MHz）
 
 只是有点长得有点像罗小黑战记而已。
 
 ---
 
-如果你也在搭自己的博客，下面这句是给你的：**先让它上线，再让它好看。** 我一开始纠结了很久主题，其实那一步可以放到最后——能跑起来的丑博客，比躺在本地文件夹里的完美设计有价值得多。
 
+```python
 cout<<"Hello World!"<<endl;
-Commit?(Y/N)y_
+Commit?(Y/N) y_
+```

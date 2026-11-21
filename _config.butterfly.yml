@@ -1113,6 +1113,14 @@ inject:
       .ly-row .k{opacity:.58;white-space:nowrap}
       .ly-row .v{margin-left:auto;text-align:right;word-break:break-all}
       .ly-row .v a{color:#49b1f5;text-decoration:none}
+      .ly-sec+.ly-sec{margin-top:13px;padding-top:12px;border-top:1px solid rgba(140,140,140,.16)}
+      .ly-sec-t{font-size:12px;opacity:.55;letter-spacing:.3px;margin-bottom:7px}
+      .ly-tags{display:flex;flex-wrap:wrap;gap:6px}
+      .ly-tag{font-size:12px;padding:2px 10px;border-radius:20px;background:rgba(140,140,140,.12);border:1px solid rgba(140,140,140,.18);transition:all .2s}
+      .ly-tag:hover{border-color:#49b1f5;color:#49b1f5}
+      .ly-dev{display:flex;flex-direction:column;gap:11px}
+      .ly-dev-n{font-size:13px;font-weight:500}
+      .ly-dev-m{font-size:12px;opacity:.55;margin-top:3px}
       </style>
     - |
       <script>
