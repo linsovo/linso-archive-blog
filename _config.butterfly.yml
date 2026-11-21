@@ -325,7 +325,7 @@ aside:
   card_recent_post:
     enable: true
     # If set 0 will show all
-    limit: 5
+    limit: 3
     # Sort: date / updated
     sort: date
     sort_order:
@@ -1121,6 +1121,18 @@ inject:
       .ly-dev{display:flex;flex-direction:column;gap:11px}
       .ly-dev-n{font-size:13px;font-weight:500}
       .ly-dev-m{font-size:12px;opacity:.55;margin-top:3px}
+      .card-widget.card-info{display:grid;grid-template-columns:76px minmax(0,1fr);column-gap:16px;align-items:center;text-align:left}
+      .card-widget.card-info .avatar-img{grid-column:1;grid-row:1;margin:0;width:76px;height:76px;border-radius:14px}
+      .card-widget.card-info .avatar-img img{width:76px;height:76px;object-fit:cover;border-radius:14px}
+      .card-widget.card-info .author-info-name{grid-column:2;grid-row:1;text-align:left;margin:0;font-size:1.4em;line-height:1.2}
+      .card-widget.card-info .author-info-description{grid-column:1/-1;margin-top:14px}
+      .card-widget.card-info .site-data,.card-widget.card-info #card-info-btn,.card-widget.card-info .card-info-social-icons{grid-column:1/-1}
+      .ly-two-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+      .ly-two-cards .card-widget{background:var(--card-bg);box-shadow:var(--card-box-shadow);border-radius:8px;padding:20px 24px;margin:0;transition:all .3s}
+      .ly-two-cards .card-widget:hover{box-shadow:var(--card-hover-box-shadow)}
+      .ly-two-cards .item-headline{padding-bottom:6px;font-size:1.2em}
+      .ly-two-cards .item-headline span{margin-left:6px}
+      @media(max-width:768px){.ly-two-cards{grid-template-columns:1fr}}
       </style>
     - |
       <script>
@@ -1135,6 +1147,32 @@ inject:
       </script>
   bottom:
     # - <script src="xxxx"></script>
+    - |
+      <script>
+      (function () {
+        function moveCards() {
+          var rp = document.getElementById('recent-posts')
+          var s = document.getElementById('card-skill')
+          var d = document.getElementById('card-device')
+          if (!rp || !s || !d) return
+          var wrap = document.getElementById('ly-two-cards')
+          if (!wrap) {
+            wrap = document.createElement('div')
+            wrap.id = 'ly-two-cards'
+            wrap.className = 'ly-two-cards'
+            rp.appendChild(wrap)
+          }
+          if (s.parentNode !== wrap) wrap.appendChild(s)
+          if (d.parentNode !== wrap) wrap.appendChild(d)
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', moveCards)
+        } else {
+          moveCards()
+        }
+        if (window.btf && btf.addGlobalFn) btf.addGlobalFn('pjaxComplete', moveCards, 'ly-two-cards')
+      })();
+      </script>
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work

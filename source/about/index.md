@@ -5,9 +5,9 @@ type: about
 top_img: false
 ---
 
-我是泠潇。
+很高兴认识你，我是泠潇。
 
-这个博客叫 **LiNSO ARCHIVE**，ARCHIVE 是存档的意思。它不追热点，也不打算做给谁看——更像是把自己散落在各处的想法集中收拢的一个地方。写下来的东西未必想清楚了，但至少是当时的真话。
+这是一个正经的自我介绍。不正经的自我介绍请查看[LiNSO STARTER Edition](https://linsovo.github.io/1970/01/01/kai-zhang/)
 
 ## 这里会有什么
 
@@ -22,3 +22,4 @@ top_img: false
 ## 找到我
 
 - GitHub：[linsovo](https://github.com/linsovo)
+- Bilibili：[程泠潇Lab](https://space.bilibili.com/114187952)
