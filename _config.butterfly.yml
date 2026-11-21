@@ -171,8 +171,8 @@ subtitle:
   source: false
   # If you close the typewriter effect, the subtitle will only show the first line of sub
   sub:
-    - 大概会写一些老机器测评
-    - 还有一些日常
+    - 请不要害怕这个让我们相遇的世界
+    - 会更新数码测评/硬件折腾记录/碎碎念
     - 不知道……先空着吧
 
 # Article layout on the homepage
@@ -296,10 +296,10 @@ aside:
     enable: true
     description: |
       <div class="ly-card">
-      <p class="ly-sign">泠潇的存档库</p>
+      <p class="ly-sign">被困在十七岁的夏天永远长不大的某人<br>爱好是数码、音乐和写作</p>
       <div class="ly-links">
       <a href="https://linsovo.github.io/"><i class="fas fa-home"></i>博客</a>
-      <a href="/archives/"><i class="fas fa-archive"></i>归档</a>
+      <a href="/archives/"><i class="fas fa-archive"></i>文章</a>
       <a href="/about/"><i class="fas fa-user"></i>关于</a>
       </div>
       <div class="ly-rows">
@@ -316,8 +316,8 @@ aside:
       </div>
     button:
       enable: true
-      icon: fab fa-github
-      text: 关注程泠潇谢谢喵
+      icon: fab fa-bilibili
+      text: 关注泠潇谢谢喵
       link: https://space.bilibili.com/114187952
   card_announcement:
     enable: true
@@ -1128,13 +1128,22 @@ inject:
       .card-widget.card-info .author-info-description{grid-column:1/-1;margin-top:14px}
       .card-widget.card-info .site-data,.card-widget.card-info #card-info-btn,.card-widget.card-info .card-info-social-icons{grid-column:1/-1}
       .ly-two-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
-      .ly-two-cards .card-widget{background:var(--card-bg);box-shadow:var(--card-box-shadow);border-radius:8px;padding:20px 24px;margin:0;transition:all .3s}
-      .ly-two-cards .card-widget:hover{box-shadow:var(--card-hover-box-shadow)}
-      .ly-two-cards .item-headline{padding-bottom:6px;font-size:1.2em}
-      .ly-two-cards .item-headline span{margin-left:6px}
+      .ly-two-cards .card-widget,#recent-posts > .card-widget{background:var(--card-bg);box-shadow:var(--card-box-shadow);border-radius:8px;padding:20px 24px;margin:0;transition:all .3s}
+      .ly-two-cards .card-widget:hover,#recent-posts > .card-widget:hover{box-shadow:var(--card-hover-box-shadow)}
+      #recent-posts > .card-widget{margin-top:20px}
+      .ly-two-cards .item-headline,#recent-posts > .card-widget .item-headline{padding-bottom:6px;font-size:1.2em}
+      .ly-two-cards .item-headline span,#recent-posts > .card-widget .item-headline span{margin-left:6px}
       @media(max-width:768px){.ly-two-cards{grid-template-columns:1fr}}
-      /* 详情页隐藏技能/设备卡（首页被 JS 搬走后不受影响） */
-      #aside-content > .card-skill,#aside-content > .card-device{display:none}
+      .ly-flinks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+      .ly-flink{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:8px;border:1px solid rgba(140,140,140,.18);color:inherit;text-decoration:none;transition:all .2s;min-width:0}
+      .ly-flink:hover{border-color:#49b1f5;color:#49b1f5;transform:translateY(-2px)}
+      .ly-flink img{width:32px;height:32px;border-radius:8px;object-fit:cover;flex:none;background:rgba(140,140,140,.12)}
+      .ly-flink>div{min-width:0}
+      .ly-flink-n{font-size:13px;font-weight:500}
+      .ly-flink-d{font-size:11.5px;opacity:.55;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      @media(max-width:768px){.ly-flinks{grid-template-columns:1fr}}
+      /* 详情页隐藏技能/设备/友链卡（首页被 JS 搬走后不受影响） */
+      #aside-content > .card-skill,#aside-content > .card-device,#aside-content > .card-links{display:none}
       /* 条目前的图标 */
       .ly-tag i{margin-right:5px;font-size:11px;opacity:.85;vertical-align:middle}
       .ly-tag img{width:12px;height:12px;margin-right:5px;vertical-align:-2px;border-radius:2px;object-fit:contain}
@@ -1162,6 +1171,7 @@ inject:
           var rp = document.getElementById('recent-posts')
           var s = document.getElementById('card-skill')
           var d = document.getElementById('card-device')
+          var l = document.getElementById('card-links')
           if (!rp || !s || !d) return
           var wrap = document.getElementById('ly-two-cards')
           if (!wrap) {
@@ -1172,6 +1182,7 @@ inject:
           }
           if (s.parentNode !== wrap) wrap.appendChild(s)
           if (d.parentNode !== wrap) wrap.appendChild(d)
+          if (l && l.previousElementSibling !== wrap) wrap.parentNode.insertBefore(l, wrap.nextSibling)
         }
         if (document.readyState === 'loading') {
           document.addEventListener('DOMContentLoaded', moveCards)

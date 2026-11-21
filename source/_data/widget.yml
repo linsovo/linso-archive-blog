@@ -108,3 +108,18 @@ top:
       </div>
       </div>
       </div>
+
+  - class_name: card-links
+    id_name: card-links
+    name: 友情链接
+    icon: fas fa-link
+    html: |
+      <div class="ly-flinks">
+      <a class="ly-flink" href="https://siao.dev" target="_blank" rel="noopener">
+      <img src="https://aloe-assets.23451234.xyz/2026/01/avatar.png" alt="">
+      <div>
+      <div class="ly-flink-n">Aloe</div>
+      <div class="ly-flink-d">Thoughts, Nodes &amp; Code</div>
+      </div>
+      </a>
+      </div>

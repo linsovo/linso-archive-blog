@@ -1,6 +1,6 @@
 ---
 title: LiNSO Starter Edition
-date: 1970-01-01 00:00:00
+date: 2005-12-05 00:00:00
 tags:
   - 随笔
 categories:
@@ -52,6 +52,7 @@ LiNSO ARCHIVE欢迎您来~
 
 ---
 
+请不要害怕这个让我们相遇的世界。
 
 ```python
 cout<<"Hello World!"<<endl;
