@@ -33,7 +33,7 @@ menu:
 
 code_blocks:
   # Code block theme: darker / pale night / light / ocean / false
-  theme: light
+  theme: darker
   macStyle: false
   # Code block height limit (unit: px)
   height_limit: false
@@ -70,8 +70,8 @@ disable_top_img: false
 default_top_img:
 
 # The banner image of index page
-## 设为 false = 首页不显示占满整屏的大横幅，直接进入文章列表
-index_img: false
+## 留空 = 显示横幅（无背景图，用默认配色）；设为 false 则整块不渲染
+index_img:
 
 # The banner image of archive page
 archive_img:
@@ -148,9 +148,10 @@ post_meta:
 # The top_img settings of home page
 # default: top img - full screen, site info - middle
 # The position of site info, eg: 300px/300em/300rem/10%
-index_site_info_top:
+index_site_info_top: 45%
 # The height of top_img, eg: 300px/300em/300rem
-index_top_img_height:
+## 默认是 100vh（占满整屏），改小就变成一条横幅
+index_top_img_height: 320px
 
 # The subtitle on homepage
 subtitle:
