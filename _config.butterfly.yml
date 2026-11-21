@@ -70,7 +70,8 @@ disable_top_img: false
 default_top_img:
 
 # The banner image of index page
-index_img:
+## 设为 false = 首页不显示占满整屏的大横幅，直接进入文章列表
+index_img: false
 
 # The banner image of archive page
 archive_img:
@@ -300,10 +301,15 @@ aside:
       <a href="/about/"><i class="fas fa-user"></i>关于</a>
       </div>
       <div class="ly-rows">
+      <div class="ly-row"><i class="fas fa-venus-mars"></i><span class="k">性别</span><span class="v">男</span></div>
       <div class="ly-row"><i class="fas fa-clock"></i><span class="k">时区</span><span class="v">UTC+8</span></div>
-      <div class="ly-row"><i class="fab fa-github"></i><span class="k">GitHub</span><span class="v"><a href="https://github.com/linsovo">@linsovo</a></span></div>
+      <div class="ly-row"><i class="fas fa-location-dot"></i><span class="k">所在地</span><span class="v">海南海口</span></div>
+      <div class="ly-row"><i class="fas fa-brain"></i><span class="k">MBTI</span><span class="v">ENFP-T</span></div>
+      <div class="ly-row"><i class="fas fa-graduation-cap"></i><span class="k">学校</span><span class="v">海南大学</span></div>
+      <div class="ly-row"><i class="fas fa-book-open"></i><span class="k">专业</span><span class="v">传播学 · 在读</span></div>
       <div class="ly-row"><i class="fas fa-envelope"></i><span class="k">邮箱</span><span class="v">linsovo@qq.com</span></div>
-      <div class="ly-row"><i class="fab fa-bilibili"></i><span class="k">B站</span><span class="v"><a href="https://space.bilibili.com/114187952">@泠潇</a></span></div>
+      <div class="ly-row"><i class="fab fa-github"></i><span class="k">GitHub</span><span class="v"><a href="https://github.com/linsovo">@linsovo</a></span></div>
+      <div class="ly-row"><i class="fab fa-bilibili"></i><span class="k">B站</span><span class="v"><a href="https://space.bilibili.com/114187952">程泠潇Lab</a></span></div>
       </div>
       </div>
     button:
