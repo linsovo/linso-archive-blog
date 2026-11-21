@@ -98,6 +98,14 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: butterfly
 
+# 站内搜索索引（hexo-generator-searchdb）
+## 生成 search.xml 供 Butterfly 的本地搜索读取
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
