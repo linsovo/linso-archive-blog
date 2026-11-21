@@ -4,8 +4,8 @@ date: 2005-12-05 00:00:00
 tags:
   - 随笔
 categories:
-  - 日常
-description: LiNSO ARCHIVE欢迎您来~
+  - 碎碎念
+description: LiNSO ARCHIVE欢迎您来~本篇是Linso全手搓的第一篇碎碎念文章
 ---
 
 {% note primary %}

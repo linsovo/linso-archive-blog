@@ -7,7 +7,7 @@ top_img: false
 
 很高兴认识你，我是泠潇。
 
-这是一个正经的自我介绍。不正经的自我介绍请参考[LiNSO STARTER Edition](https://linsovo.github.io/1970/01/01/kai-zhang/)
+这是一个正经的自我介绍。不正经的自我介绍请参考[LiNSO STARTER Edition](https://linsovo.github.io/1970/01/01/kai-zhang/)“吾乃何许人也？”部分。
 
 ## 最近在做的事
 
