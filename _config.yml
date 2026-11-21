@@ -4,8 +4,8 @@
 
 # Site
 title: LiNSO ARCHIVE
-subtitle: '泠潇的存档库'
-description: 'LiNSO ARCHIVE —— 用来记录一些技术与日常以及5%的碎碎念'
+subtitle: '用来记录泠潇的一些技术与日常以及5%的碎碎念'
+description: 'LiNSO ARCHIVE —— 用来记录泠潇的一些技术与日常以及5%的碎碎念'
 keywords: '泠潇,LINSO,博客,技术,随笔'
 author: 泠潇
 language: zh-CN
@@ -61,7 +61,7 @@ prismjs:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 3
+  per_page: 10
   order_by: -date
 
 # Category & Tag
