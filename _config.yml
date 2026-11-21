@@ -4,12 +4,12 @@
 
 # Site
 title: LiNSO ARCHIVE
-subtitle: '存档，也是一种写作'
-description: 'LiNSO ARCHIVE —— 泠潇的个人博客，记录技术、阅读与日常。'
-keywords: '泠潇,LiNSO,博客,技术,随笔'
+subtitle: '泠潇的存档库'
+description: 'LiNSO ARCHIVE —— 用来记录一些技术与日常以及5%的碎碎念'
+keywords: '泠潇,LINSO,博客,技术,随笔'
 author: 泠潇
 language: zh-CN
-timezone: 'Asia/Shanghai'
+timezone: 'Asia/Singapore'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'

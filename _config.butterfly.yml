@@ -19,7 +19,7 @@ nav:
 
 menu:
   首页: / || fas fa-home
-  归档: /archives/ || fas fa-archive
+  文章: /archives/ || fas fa-archive
   分类: /categories/ || fas fa-folder-open
   标签: /tags/ || fas fa-tags
   关于: /about/ || fas fa-user
@@ -51,7 +51,7 @@ code_blocks:
 #   icon: link || the description || color
 social:
   fab fa-github: https://github.com/linsovo || Github || '#24292e'
-  fas fa-envelope: mailto:linsovo@users.noreply.github.com || Email || '#4a7dbe'
+  fas fa-envelope: mailto:linsovo@qq.com || Email || '#4a7dbe'
 
 # --------------------------------------
 # Image Settings
@@ -60,7 +60,7 @@ social:
 favicon: /img/favicon.png
 
 avatar:
-  img: /img/butterfly-icon.png
+  img: /img/mayadajie.jpg
   effect: false
 
 # Disable all banner images
@@ -169,9 +169,9 @@ subtitle:
   source: false
   # If you close the typewriter effect, the subtitle will only show the first line of sub
   sub:
-    - 存档，也是一种写作
-    - 记录技术、阅读与日常
-    - 慢慢写，写久一点
+    - 大概会写一些老机器测评
+    - 还有一些日常
+    - 不知道……先空着吧
 
 # Article layout on the homepage
 # 1: Cover on the left, info on the right
@@ -295,11 +295,11 @@ aside:
     button:
       enable: true
       icon: fab fa-github
-      text: Follow Me
-      link: https://github.com/xxxxxx
+      text: 关注程泠潇谢谢喵
+      link: https://space.bilibili.com/114187952
   card_announcement:
     enable: true
-    content: This is my Blog
+    content: 泠潇更(mō)新(yú)中……梦想是睡到自然醒(。-ω-)zzz
   card_recent_post:
     enable: true
     # If set 0 will show all
@@ -491,7 +491,7 @@ search:
   # Choose: algolia_search / local_search / docsearch
   # leave it empty if you don't need search
   use: local_search
-  placeholder: 搜点什么…
+  placeholder: 泠潇潇很不高兴为您服务^^
 
   # Algolia Search
   algolia_search:
