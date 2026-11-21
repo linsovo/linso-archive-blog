@@ -1133,6 +1133,14 @@ inject:
       .ly-two-cards .item-headline{padding-bottom:6px;font-size:1.2em}
       .ly-two-cards .item-headline span{margin-left:6px}
       @media(max-width:768px){.ly-two-cards{grid-template-columns:1fr}}
+      /* 详情页隐藏技能/设备卡（首页被 JS 搬走后不受影响） */
+      #aside-content > .card-skill,#aside-content > .card-device{display:none}
+      /* 条目前的图标 */
+      .ly-tag i{margin-right:5px;font-size:11px;opacity:.85;vertical-align:middle}
+      .ly-tag img{width:12px;height:12px;margin-right:5px;vertical-align:-2px;border-radius:2px;object-fit:contain}
+      .ly-dev-i{display:flex;gap:9px;align-items:flex-start}
+      .ly-dev-i>i{margin-top:3px;font-size:13px;opacity:.6;width:14px;text-align:center;flex:none}
+      .ly-dev-n img{width:15px;height:15px;margin-right:5px;vertical-align:-3px;border-radius:3px;object-fit:contain}
       </style>
     - |
       <script>

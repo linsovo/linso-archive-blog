@@ -8,7 +8,7 @@ categories:
 description: LiNSO ARCHIVE欢迎您来~
 ---
 
-{% note info fa-solid fa-lightbulb flat %}
+{% note primary %}
 LiNSO ARCHIVE欢迎您来~
 {% endnote %}
 

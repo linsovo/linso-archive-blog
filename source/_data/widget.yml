@@ -1,9 +1,18 @@
-# 侧栏自定义卡片
-# Butterfly 内置机制：site.data.widget
-#   top    -> 显示在资料卡、公告卡之后（推荐）
-#   bottom -> 显示在侧栏最底部
-# 每一项字段：class_name / id_name / name / icon / html
-# 图标去 https://fontawesome.com/search 找，复制 class 填到 icon
+# ============================================================
+# 侧栏自定义卡片（Butterfly 内置机制：site.data.widget）
+#
+# 改完执行：hexo g -d
+#
+# 图标两种写法：
+#   1) FontAwesome 图标 → <i class="fas fa-camera"></i>
+#      图标名去 https://fontawesome.com/search 搜，复制 class 就行
+#      注意前缀：fas = 实心图标，fab = 品牌图标（GitHub/安卓/B站等）
+#   2) 自己的图片 → 图片放进 source/img/，然后写
+#      <img src="/img/amd.png">   （品牌 Logo 用这种，比如 AMD、一加）
+#
+# 加一条：复制一整行 <span class="ly-tag">...</span>
+# 加一组：复制整个 <div class="ly-sec">...</div>
+# ============================================================
 
 top:
   - class_name: card-skill
@@ -13,15 +22,25 @@ top:
     html: |
       <div class="ly-sec">
       <div class="ly-sec-t">内容创作</div>
-      <div class="ly-tags"><span class="ly-tag">拍摄</span><span class="ly-tag">剪辑</span><span class="ly-tag">老机器测评</span></div>
+      <div class="ly-tags">
+      <span class="ly-tag"><i class="fas fa-camera"></i>拍摄</span>
+      <span class="ly-tag"><i class="fas fa-scissors"></i>剪辑</span>
+      <span class="ly-tag"><i class="fas fa-microchip"></i>老机器测评</span>
+      </div>
       </div>
       <div class="ly-sec">
       <div class="ly-sec-t">文字</div>
-      <div class="ly-tags"><span class="ly-tag">写作</span><span class="ly-tag">排版</span></div>
+      <div class="ly-tags">
+      <span class="ly-tag"><i class="fas fa-pen-nib"></i>写作</span>
+      <span class="ly-tag"><i class="fas fa-font"></i>排版</span>
+      </div>
       </div>
       <div class="ly-sec">
       <div class="ly-sec-t">语言</div>
-      <div class="ly-tags"><span class="ly-tag">中文</span><span class="ly-tag">English</span></div>
+      <div class="ly-tags">
+      <span class="ly-tag"><i class="fas fa-language"></i>中文</span>
+      <span class="ly-tag"><i class="fas fa-language"></i>English</span>
+      </div>
       </div>
 
   - class_name: card-device
@@ -31,11 +50,17 @@ top:
     html: |
       <div class="ly-dev">
       <div class="ly-dev-i">
+      <i class="fas fa-laptop"></i>
+      <div>
       <div class="ly-dev-n">笔记本 · 型号待填</div>
       <div class="ly-dev-m">系统待填</div>
       </div>
+      </div>
       <div class="ly-dev-i">
+      <i class="fas fa-mobile-screen"></i>
+      <div>
       <div class="ly-dev-n">手机 · 型号待填</div>
       <div class="ly-dev-m">系统待填</div>
+      </div>
       </div>
       </div>
