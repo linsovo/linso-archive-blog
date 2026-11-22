@@ -18,7 +18,7 @@ LiNSO ARCHIVE欢迎您来~
 
 在世界第一可爱哈士奇Siaospeed宝那里学习了一些网站搭建基础知识，于是这个网站就这样上线了！
 
-特别鸣谢：**<span style="color:#4D6BFE">Deepseek V4.1 Flash 1017<span>** & **<span style="color:#14B8A6">Siaospeed<span>** & **<span style="color:#ED1C24">Advanced Micro Devices, Inc.<span>**
+特别鸣谢：**<span style="color:#4D6BFE">Deepseek V4.1 Flash 1017</span>** & **<span style="color:#14B8A6">Siaospeed</span>** & **<span style="color:#ED1C24">Advanced Micro Devices, Inc.</span>**
 
 ## 吾乃何许人也？
 
@@ -55,7 +55,7 @@ LiNSO ARCHIVE欢迎您来~
 请不要害怕这个让我们相遇的世界。
 以上，泠潇欢迎你来。
 
-```python
+```cpp
 cout<<"Hello World!"<<endl;
 Commit?(Y/N) y_
 ```

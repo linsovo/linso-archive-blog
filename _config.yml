@@ -115,4 +115,6 @@ deploy:
   type: git
   repo: https://github.com/linsovo/linsovo.github.io.git
   branch: main
-  message: 'Site updated: {{ now("YYYY-MM-DD HH:mm:ss") }}'
+  # 注意：hexo-deployer-git 的 now() 用 Luxon 格式化（不是 Moment），
+  # 必须写 yyyy-MM-dd；写成 YYYY-MM-DD 会得到 "YYYY-11-2026年11月22日" 这种乱码。
+  message: 'Site updated: {{ now("yyyy-MM-dd HH:mm:ss") }}'

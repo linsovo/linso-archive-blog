@@ -24,7 +24,7 @@
 
 | 组件 | 版本 | 说明 |
 |---|---|---|
-| Node.js | v22.22.2 | 运行时 |
+| Node.js | v24.21.0 | 运行时（Hexo 8 要求 ≥18） |
 | Hexo | 8.1.2 | 静态站点生成器 |
 | hexo-theme-butterfly | 5.7.2 | 主题 |
 | 渲染器 | marked / pug / stylus / ejs | Markdown、模板、样式 |
@@ -69,10 +69,13 @@ C:\Blog_v1\
 
 ```powershell
 cd C:\Blog_v1
-hexo new "文章标题"     # 新建文章 → source/_posts/
-# 用编辑器写内容
+hexo new my-post-slug   # 文件名=网址，必须英文/拼音；中文标题写进 front-matter 的 title
+# 用编辑器写 source/_posts/my-post-slug.md
 hexo g -d              # 生成 + 部署上线（1~2 分钟后生效）
 ```
+
+> 不要 `hexo new "中文标题"`：`new_post_name: :title.md` 会生成中文文件名，网址变成
+> `%E4%B8%AD...` 这种编码（见 6.1「网址规则」）。
 
 或用脚本：
 
@@ -95,8 +98,8 @@ hexo g -d              # 生成 + 部署上线（1~2 分钟后生效）
 - 需要能访问 `github.com:443`（国内常出现间歇性不通）
 - 机器上曾存在失效的本地代理变量（`HTTP_PROXY` 指向 `127.0.0.1:50225`），会导致 `CONNECT tunnel failed, response 502`。用户在 TUN 模式 VPN 下直连可用，此时**执行前先清除代理变量**：
 
-```bash
-unset HTTP_PROXY HTTPS_PROXY http_proxy https_proxy ALL_PROXY all_proxy
+```powershell
+Remove-Item Env:HTTP_PROXY,Env:HTTPS_PROXY,Env:http_proxy,Env:https_proxy,Env:ALL_PROXY,Env:all_proxy -ErrorAction SilentlyContinue
 ```
 
 - 部署报 `Spawn failed` 时，真实原因通常在报错堆栈上方（多为网络），**重试一两次通常即可**。
@@ -138,10 +141,10 @@ unset HTTP_PROXY HTTPS_PROXY http_proxy https_proxy ALL_PROXY all_proxy
 PJAX 跳转时通过 btf.addGlobalFn('pjaxComplete', ...) 重新执行
 ```
 
-**降级行为**：如果 JS 未执行，卡片会留在侧栏，不会消失。
+**降级行为（注意，别想当然）**：如果 JS 没执行（禁用 JS、脚本报错、PJAX 没重跑），三张卡会被下面那条 CSS 直接**隐藏**，而不是留在侧栏。也就是说搬卡脚本是这三张卡能否显示的**单点依赖**，改它之前先确认首页能看到。
 
 **配套 CSS**：`#aside-content > .card-skill, .card-device, .card-links { display:none }`
-—— 该规则只作用于「侧栏的直接子元素」，卡片被搬走后自然失效，从而**同时实现「首页显示、详情页隐藏」**。
+—— 该规则只作用于「侧栏的直接子元素」。卡片被 JS 搬进 `#recent-posts` 后不再是侧栏子元素，隐藏自然失效。实际效果是：**只有首页（存在 `#recent-posts`）显示这三张卡**，文章页、归档、分类、标签、关于页都不显示。
 
 ### 5.3 自定义卡片数据：`source/_data/widget.yml`
 
@@ -188,7 +191,7 @@ if (localStorage.getItem('theme') === null && btf.activateDarkMode) {
 | 侧栏分类卡 | 关闭 | `card_categories.enable: false` |
 | 侧栏标签卡 | 关闭 | `card_tags.enable: false` |
 | 侧栏最新文章 | 3 篇 | `card_recent_post.limit: 3` |
-| 首页文章数 | 3 篇/页 | `_config.yml` → `index_generator.per_page` |
+| 首页文章数 | 10 篇/页（与归档一致） | `_config.yml` → `index_generator.per_page` |
 | 站内搜索 | 本地搜索（`local_search`） | `search.use` + `hexo-generator-searchdb` |
 | 访问统计 | 不蒜子 | `busuanzi`（默认开启） |
 
@@ -294,6 +297,7 @@ description: 首页卡片上显示的一句话摘要
 | 页面能开但无样式/无图 | `url` 与 `root` 与实际部署路径不匹配 | 检查 `_config.yml` 的 `url` / `root` |
 | 部署报 `CONNECT tunnel failed, 502` | 本地残留失效代理，或 VPN 未开 | 清除代理变量 / 开启 VPN |
 | 部署报 `Spawn failed` | 多为网络问题 | 重试；查看堆栈上方的 git 原始报错 |
+| 部署提交信息变成 `YYYY-11-2026年11月…` | `deploy.message` 用了 Moment 的 token，而 deployer 用 Luxon 格式化 | 用 `yyyy-MM-dd HH:mm:ss`（已修好，见 `_config.yml`） |
 | 改了 `.yml` 不生效 | 配置只在启动时读取 | 重启 `hexo server` / 重新 `hexo g` |
 | 导航「分类」「标签」404 | 缺少总览页文件 | 见第 7 节末尾说明 |
 | 文章链接失效 | 改了文件名或（旧配置下的）日期 | 引用处改用 `{% post_link %}` |
@@ -323,3 +327,5 @@ description: 首页卡片上显示的一句话摘要
 | 2026-11-22 | 关闭侧栏分类/标签卡片；补建分类、标签总览页 |
 | 2026-11-22 | 文章网址改为 `posts/:title/`，与日期解耦；站内引用改用 `post_link` |
 | 2026-11-23 | 撰写本维护手册 |
+| 2026-11-23 | 修复：favicon 404（补 `source/img/favicon.png`，由头像缩放生成）；部署提交信息乱码（`now()` 改用 Luxon token）；首篇 3 处未闭合 `<span>`；代码块语言标注 |
+| 2026-11-23 | 按实况修正手册：首页 10 篇/页、Node v24、卡片降级行为、`hexo new` 用法、PowerShell 清代理命令 |
