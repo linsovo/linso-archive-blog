@@ -8,7 +8,7 @@
 
 <h2 id="开篇碎碎念"><a href="#开篇碎碎念" class="headerlink" title="开篇碎碎念"></a>开篇碎碎念</h2><p>从我记忆中接触互联网开始，就一直很想搭建一个属于自己的网站。从2010s的QQ空间到2020s的朋友圈也是记录了不少我的审美变迁和黑历史（捂脸）。</p>
 <p>在世界第一可爱哈士奇Siaospeed宝那里学习了一些网站搭建基础知识，于是这个网站就这样上线了！</p>
-<p>特别鸣谢：<strong><span style="color:#4D6BFE">Deepseek V4.1 Flash 1017<span></strong> &amp; <strong><span style="color:#14B8A6">Siaospeed<span></strong> &amp; <strong><span style="color:#ED1C24">Advanced Micro Devices, Inc.<span></strong></p>
+<p>特别鸣谢：<strong><span style="color:#4D6BFE">Deepseek V4.1 Flash 1017</span></strong> &amp; <strong><span style="color:#14B8A6">Siaospeed</span></strong> &amp; <strong><span style="color:#ED1C24">Advanced Micro Devices, Inc.</span></strong></p>
 <h2 id="吾乃何许人也？"><a href="#吾乃何许人也？" class="headerlink" title="吾乃何许人也？"></a>吾乃何许人也？</h2><p><strong>程泠潇</strong>（通常也记作泠潇&#x2F;Linso&#x2F;linsovo），目前是一名不想成为普通学生的普通学生(Plus Version)。</p>
 <p>目前已荣获下列奖项与TMI：</p>
 <ul>
@@ -35,7 +35,7 @@
 <h2 id="更新频率（注意到单位不为MHz）"><a href="#更新频率（注意到单位不为MHz）" class="headerlink" title="更新频率（注意到单位不为MHz）"></a>更新频率（注意到单位不为MHz）</h2><p>只是长得有点像罗小黑战记而已。停更半年后腹泻式更新再停更半年 바로 나의 스타일</p>
 <hr>
 <p>请不要害怕这个让我们相遇的世界。<br>以上，泠潇欢迎你来。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cout&lt;&lt;<span class="string">&quot;Hello World!&quot;</span>&lt;&lt;endl;</span><br><span class="line">Commit?(Y/N) y_</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">cout&lt;&lt;<span class="string">&quot;Hello World!&quot;</span>&lt;&lt;endl;</span><br><span class="line">Commit?(Y/N) y_</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
