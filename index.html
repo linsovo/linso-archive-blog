@@ -210,14 +210,31 @@
 .ly-row .k{opacity:.58;white-space:nowrap}
 .ly-row .v{margin-left:auto;text-align:right;word-break:break-all}
 .ly-row .v a{color:#49b1f5;text-decoration:none}
-.ly-sec+.ly-sec{margin-top:13px;padding-top:12px;border-top:1px solid rgba(140,140,140,.16)}
-.ly-sec-t{font-size:12px;opacity:.55;letter-spacing:.3px;margin-bottom:7px}
-.ly-tags{display:flex;flex-wrap:wrap;gap:6px}
-.ly-tag{font-size:12px;padding:2px 10px;border-radius:20px;background:rgba(140,140,140,.12);border:1px solid rgba(140,140,140,.18);transition:all .2s}
-.ly-tag:hover{border-color:#49b1f5;color:#49b1f5}
-.ly-dev{display:flex;flex-direction:column;gap:11px}
-.ly-dev-n{font-size:13px;font-weight:500}
-.ly-dev-m{font-size:12px;opacity:.55;margin-top:3px}
+.ly-sk-list,.ly-dev-list{list-style:disc;padding-left:18px;margin:4px 0 0}
+.ly-sk-list>li+li{margin-top:13px}
+.ly-sk-hd{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;line-height:1.5}
+.ly-sk-hd i{font-size:12px;opacity:.75;width:14px;text-align:center}
+.ly-sk-hd strong{font-weight:700}
+.ly-sk-grid{display:flex;flex-wrap:wrap;gap:10px 8px;margin-top:7px}
+.ly-sk-item{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;width:42px;cursor:default;transition:transform .2s ease}
+.ly-sk-item:hover{transform:translateY(-2px)}
+.ly-sk-ico{width:38px;height:38px;display:flex;align-items:center;justify-content:center}
+.ly-sk-ico svg{width:36px;height:36px;display:block}
+.ly-sk-glyph{width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;line-height:1;letter-spacing:-.5px}
+.ly-sk-bar{width:100%;height:7px;border-radius:999px;border:1px solid currentColor;overflow:hidden;box-sizing:border-box;opacity:.88}
+.ly-sk-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,color-mix(in srgb,currentColor 45%,transparent),currentColor);animation:lyFlyIn .9s cubic-bezier(.22,1,.36,1) both}
+@keyframes lyFlyIn{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+.ly-sk-item::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 7px);left:50%;transform:translate(-50%,4px);padding:3px 8px;border-radius:6px;font-size:11.5px;line-height:1.4;white-space:nowrap;background:rgba(20,20,24,.92);color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.22);opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;z-index:20}
+[data-theme="dark"] .ly-sk-item::after{background:rgba(245,245,248,.94);color:#141418}
+.ly-sk-item::before{content:"";position:absolute;bottom:calc(100% + 2px);left:50%;transform:translate(-50%,4px);border:5px solid transparent;border-top-color:rgba(20,20,24,.92);opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;z-index:20}
+[data-theme="dark"] .ly-sk-item::before{border-top-color:rgba(245,245,248,.94)}
+.ly-sk-item:hover::after,.ly-sk-item:hover::before,.ly-sk-item:focus-visible::after,.ly-sk-item:focus-visible::before{opacity:1;transform:translate(-50%,0)}
+.ly-sk-text{margin-top:5px;font-size:13.5px;opacity:.85;line-height:1.6}
+.ly-dev-list>li+li{margin-top:13px}
+.ly-dev-main{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px;font-size:13.5px;line-height:1.5}
+.ly-dev-main i{width:14px;text-align:center;font-size:12px;opacity:.75}
+.ly-dev-main strong{font-weight:700;margin-right:6px}
+.ly-dev-sub{margin-top:5px;padding-left:20px;font-size:12px;opacity:.62;line-height:1.5}
 .card-widget.card-info{display:grid;grid-template-columns:76px minmax(0,1fr);column-gap:16px;align-items:center;text-align:left}
 .card-widget.card-info .avatar-img{grid-column:1;grid-row:1;margin:0;width:76px;height:76px;border-radius:14px}
 .card-widget.card-info .avatar-img img{width:76px;height:76px;object-fit:cover;border-radius:14px}
@@ -241,12 +258,6 @@
 @media(max-width:768px){.ly-flinks{grid-template-columns:1fr}}
 /* 详情页隐藏技能/设备/友链卡（首页被 JS 搬走后不受影响） */
 #aside-content > .card-skill,#aside-content > .card-device,#aside-content > .card-links{display:none}
-/* 条目前的图标 */
-.ly-tag i{margin-right:5px;font-size:11px;opacity:.85;vertical-align:middle}
-.ly-tag img{width:12px;height:12px;margin-right:5px;vertical-align:-2px;border-radius:2px;object-fit:contain}
-.ly-dev-i{display:flex;gap:9px;align-items:flex-start}
-.ly-dev-i>i{margin-top:3px;font-size:13px;opacity:.6;width:14px;text-align:center;flex:none}
-.ly-dev-n img{width:15px;height:15px;margin-right:5px;vertical-align:-3px;border-radius:3px;object-fit:contain}
 </style>
 <script>
 (function () {
@@ -277,88 +288,66 @@
 <div class="ly-row"><i class="fab fa-bilibili"></i><span class="k">B站</span><span class="v"><a target="_blank" rel="noopener" href="https://space.bilibili.com/114187952">程泠潇Lab</a></span></div>
 </div>
 </div>
-</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/114187952"><i class="fab fa-bilibili"></i><span>关注泠潇谢谢喵</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/linsovo" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:linsovo@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">泠潇更(mō)新(yú)中……<br>梦想是睡到自然醒(。-ω-)zzz</div></div><div class="card-widget card-skill" id="card-skill"><div class="item-headline"><i class="fas fa-tools"></i><span>我的技能</span></div><div class="item-content"><div class="ly-sec">
-<div class="ly-sec-t">视听语言</div>
-<div class="ly-tags">
-<span class="ly-tag"><i class="fas fa-image"></i>Photoshop</span>
-<span class="ly-tag"><i class="fas fa-scissors"></i>剪映专业版</span>
-<span class="ly-tag"><i class="fas fa-film"></i>FCPX</span>
-<span class="ly-tag"><i class="fas fa-music"></i>FL Studio</span>
-<span class="ly-tag"><i class="fas fa-palette"></i>Canva</span>
+</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/114187952"><i class="fab fa-bilibili"></i><span>关注泠潇谢谢喵</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/linsovo" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:linsovo@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">泠潇更(mō)新(yú)中……<br>梦想是睡到自然醒(。-ω-)zzz</div></div><div class="card-widget card-skill" id="card-skill"><div class="item-headline"><i class="fas fa-tools"></i><span>我的技能</span></div><div class="item-content"><ul class="ly-sk-list">
+<li>
+<span class="ly-sk-hd"><i class="fas fa-film"></i><strong>视听语言</strong></span>
+<div class="ly-sk-grid">
+<div class="ly-sk-item" tabindex="0" data-tip="剪映专业版 · 90%"><div class="ly-sk-ico"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M24.189 6.442V2.671l-4.535 2.383V4.91c.002-1.505-1.078-2.411-2.638-2.411H2.64C.993 2.5 0 3.407 0 4.91v3.81L6.354 12L0 15.316v3.8C0 20.595 1 21.5 2.64 21.5h14.373c1.56 0 2.639-.907 2.639-2.382v-.197l4.536 2.409v-3.828L13.64 12l10.55-5.557zM9.982 13.873l7.797 4.083H2.157zm7.741-7.828l-7.742 4.057l-7.825-4.057z" /></svg></div><div class="ly-sk-bar"><div class="ly-sk-fill" style="width:90%"></div></div></div>
+<div class="ly-sk-item" tabindex="0" data-tip="Canva · 80%"><div class="ly-sk-ico"><svg fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM6.962 7.68c.754 0 1.337.549 1.405 1.2.069.583-.171 1.097-.822 1.406-.343.171-.48.172-.549.069-.034-.069 0-.137.069-.206.617-.514.617-.926.548-1.508-.034-.378-.308-.618-.583-.618-1.2 0-2.914 2.674-2.674 4.629.103.754.549 1.646 1.509 1.646.308 0 .65-.103.96-.24.5-.264.799-.47 1.097-.8-.073-.885.704-2.046 1.851-2.046.515 0 .926.205.96.583.068.514-.377.582-.514.582s-.378-.034-.378-.17c-.034-.138.309-.07.275-.378-.035-.206-.24-.274-.446-.274-.72 0-1.131.994-1.029 1.611.035.275.172.549.447.549.205 0 .514-.31.617-.755.068-.308.343-.514.583-.514.102 0 .17.034.205.171v.138c-.034.137-.137.548-.102.651 0 .069.034.171.17.171.092 0 .436-.18.777-.459.117-.59.253-1.298.253-1.357.034-.24.137-.48.617-.48.103 0 .171.034.205.171v.138l-.136.617c.445-.583 1.097-.994 1.508-.994.172 0 .309.102.309.274 0 .103 0 .274-.069.446-.137.377-.309.96-.412 1.474 0 .137.035.274.207.274.171 0 .685-.206 1.096-.754l.007-.004c-.002-.068-.007-.134-.007-.202 0-.411.035-.754.104-.994.068-.274.411-.514.617-.514.103 0 .205.069.205.171 0 .035 0 .103-.034.137-.137.446-.24.857-.24 1.269 0 .24.034.582.102.788 0 .034.035.069.07.069.068 0 .548-.445.89-1.028-.308-.206-.48-.549-.48-.96 0-.72.446-1.097.858-1.097.343 0 .617.24.617.72 0 .308-.103.65-.274.96h.102a.77.77 0 0 0 .584-.24.293.293 0 0 1 .134-.117c.335-.425.83-.74 1.41-.74.48 0 .924.205.959.582.068.515-.378.618-.515.618l-.002-.002c-.138 0-.377-.035-.377-.172 0-.137.309-.068.274-.376-.034-.206-.24-.275-.446-.275-.686 0-1.13.891-1.028 1.611.034.275.171.583.445.583.206 0 .515-.308.652-.754.068-.274.343-.514.583-.514.103 0 .17.034.205.171 0 .069 0 .206-.137.652-.17.308-.171.48-.137.617.034.274.171.48.309.583.034.034.068.102.068.102 0 .069-.034.138-.137.138-.034 0-.068 0-.103-.035-.514-.205-.72-.548-.789-.891-.205.24-.445.377-.72.377-.445 0-.89-.411-.96-.926a1.609 1.609 0 0 1 .075-.649c-.203.13-.422.203-.623.203h-.17c-.447.652-.927 1.098-1.27 1.303a.896.896 0 0 1-.377.104c-.068 0-.171-.035-.205-.104-.095-.152-.156-.392-.193-.667-.481.527-1.145.805-1.453.805-.343 0-.548-.206-.582-.55v-.376c.102-.754.377-1.2.377-1.337a.074.074 0 0 0-.069-.07c-.24 0-1.028.824-1.166 1.373l-.103.445c-.068.309-.377.515-.582.515-.103 0-.172-.035-.206-.172v-.137l.046-.233c-.435.31-.87.508-1.075.508-.308 0-.48-.172-.514-.412-.206.274-.445.412-.754.412-.352 0-.696-.24-.862-.593-.244.275-.523.553-.852.764-.48.309-1.028.549-1.68.549-.582 0-1.097-.309-1.371-.583-.412-.377-.651-.96-.686-1.509-.205-1.68.823-3.84 2.4-4.8.378-.205.755-.343 1.132-.343zm9.77 3.291c-.104 0-.172.172-.172.343 0 .274.137.583.309.755a1.74 1.74 0 0 0 .102-.583c0-.343-.137-.515-.24-.515z" /></svg></div><div class="ly-sk-bar"><div class="ly-sk-fill" style="width:80%"></div></div></div>
+<div class="ly-sk-item" tabindex="0" data-tip="Photoshop · 60%"><div class="ly-sk-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="currentColor" d="M22.666 1.6C10.133 1.6 0 11.734 0 24.268v79.464C0 116.266 10.133 126.4 22.666 126.4h82.668c12.533 0 22.666-10.134 22.666-22.668V24.268C128 11.734 117.867 1.6 105.334 1.6H22.666zm23.201 31.734c4.373 0 8 .532 10.986 1.652A19.05 19.05 0 0 1 64 39.361a16.976 16.976 0 0 1 3.894 6.079c.8 2.24 1.225 4.533 1.225 6.933 0 4.587-1.066 8.373-3.2 11.36-2.132 2.986-5.118 5.227-8.585 6.507-3.627 1.334-7.627 1.813-12 1.813-1.28 0-2.135 0-2.668-.053-.533-.053-1.28-.053-2.293-.053v17.12c.053.373-.213.694-.586.747H29.44c-.426 0-.638-.215-.638-.695V34.24c0-.373.16-.588.533-.588.907 0 1.76 0 2.986-.052 1.28-.054 2.613-.052 4.053-.106 1.44-.053 2.987-.054 4.64-.107 1.654-.054 3.254-.053 4.854-.053zm1.19 10.504a18.68 18.68 0 0 0-.817.002c-1.386 0-2.613.001-3.627.055-1.066-.054-1.812-.001-2.185.052v17.92c.746.054 1.438.106 2.078.106h2.828c2.08 0 4.16-.32 6.133-.96 1.707-.48 3.2-1.494 4.373-2.827 1.12-1.334 1.654-3.146 1.654-5.493a8.776 8.776 0 0 0-1.226-4.746c-.907-1.386-2.188-2.454-3.735-3.04-1.727-.7-3.576-1.033-5.476-1.07zm44.73 2.723c2.187 0 4.427.158 6.613.478 1.6.213 3.146.642 4.586 1.229.214.053.427.265.533.478.054.213.108.427.108.64v8.694a.655.655 0 0 1-.266.533c-.48.107-.747.107-.96 0-1.6-.853-3.308-1.439-5.122-1.812-1.973-.427-3.946-.695-5.972-.695-1.067-.054-2.188.108-3.201.374-.694.16-1.28.534-1.653 1.067-.266.427-.426.96-.426 1.44s.214.96.534 1.386c.48.587 1.119 1.068 1.812 1.442a48.8 48.8 0 0 0 3.787 1.757c2.88.96 5.653 2.295 8.213 3.895 1.76 1.12 3.2 2.614 4.213 4.427a11.509 11.509 0 0 1 1.228 5.493 12.412 12.412 0 0 1-2.082 7.093 13.362 13.362 0 0 1-5.972 4.746c-2.614 1.12-5.814 1.707-9.654 1.707-2.454 0-4.852-.213-7.252-.693a21.51 21.51 0 0 1-5.44-1.707c-.373-.213-.641-.587-.588-1.014V78.24c0-.16.053-.374.213-.48.16-.107.32-.052.48.054a22.83 22.83 0 0 0 6.614 2.614c2.027.533 4.161.799 6.295.799 2.026 0 3.466-.267 4.426-.747.853-.373 1.439-1.28 1.439-2.24 0-.746-.426-1.441-1.28-2.135-.853-.693-2.613-1.492-5.226-2.505a32.638 32.638 0 0 1-7.574-3.84 13.81 13.81 0 0 1-4.053-4.533 11.44 11.44 0 0 1-1.226-5.44c0-2.293.639-4.48 1.812-6.453 1.333-2.133 3.308-3.84 5.602-4.906 2.506-1.28 5.652-1.867 9.44-1.867z" /></svg></div><div class="ly-sk-bar"><div class="ly-sk-fill" style="width:60%"></div></div></div>
+<div class="ly-sk-item" tabindex="0" data-tip="FCPX · 45%"><div class="ly-sk-ico"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M10.0957 2.00445C6.62194 2.03072 4.71683 2.2121 3.46447 3.46447C2.6068 4.32213 2.25143 5.48593 2.10418 7.25002H6.59861L10.0957 2.00445Z" /><path fill="currentColor" d="M2.02644 8.75002C2 9.68875 2 10.7633 2 12C2 16.714 2 19.0711 3.46447 20.5355C4.92893 22 7.28595 22 12 22C16.714 22 19.0711 22 20.5355 20.5355C22 19.0711 22 16.714 22 12C22 10.7633 22 9.68875 21.9736 8.75002H2.02644Z" /><path fill="currentColor" d="M21.8958 7.25002C21.7486 5.48593 21.3932 4.32213 20.5355 3.46447C19.9382 2.86714 19.1924 2.51345 18.1987 2.30403L14.9014 7.25002H21.8958Z" /><path fill="currentColor" d="M16.5401 2.08783C15.3293 2 13.8452 2 12 2C11.967 2 11.9342 2 11.9014 2L8.40139 7.25002H13.0986L16.5401 2.08783Z" /></svg></div><div class="ly-sk-bar"><div class="ly-sk-fill" style="width:45%"></div></div></div>
+<div class="ly-sk-item" tabindex="0" data-tip="FL Studio · 30%"><div class="ly-sk-ico"><svg stroke-width="2.5" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M14.81 16.195c-1.19 2.081-2.379 5.55-2.775 7.631c-1.388 7.037.198 18.236 3.964 19.525c3.865 1.288 10.307-6.046 13.479-11.398c1.387-2.28 2.676-6.244 2.973-9.118" /><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M24.622 11.933c-.793-1.387-2.874-3.37-4.857-3.27c-4.261.099-7.83 3.964-7.334 6.739c.397 1.685 3.965.198 7.83-.793m9.911 4.261c1.486 2.479 3.171 5.452 4.559 5.452c2.478.099 2.28-6.541-.496-9.614c-1.09-1.288-3.766-1.883-5.847-1.288" /><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M26.505 12.627c4.856 1.685 4.162 4.46 3.37 6.244c-.992 2.478-4.163 5.253-6.74 4.46s-4.163-5.352-2.478-9.614c.991-2.478 3.37-1.883 5.848-1.09M32.65 4.5c-.992.694-2.18 1.784-3.271 3.27c-1.09 1.487-2.379 3.668-2.874 4.758" /></svg></div><div class="ly-sk-bar"><div class="ly-sk-fill" style="width:30%"></div></div></div>
 </div>
+</li>
+<li>
+<span class="ly-sk-hd"><i class="fas fa-code"></i><strong>计算机</strong></span>
+<div class="ly-sk-grid">
+<div class="ly-sk-item" tabindex="0" data-tip="Windows · 75%"><div class="ly-sk-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="currentColor" d="M67.328 67.331h60.669V128H67.328zm-67.325 0h60.669V128H.003zM67.328 0h60.669v60.669H67.328zM.003 0h60.669v60.669H.003z" /></svg></div><div class="ly-sk-bar"><div class="ly-sk-fill" style="width:75%"></div></div></div>
+<div class="ly-sk-item" tabindex="0" data-tip="macOS · 75%"><div class="ly-sk-ico"><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path d="M97.905 67.885c.174 18.8 16.494 25.057 16.674 25.137-.138.44-2.607 8.916-8.597 17.669-5.178 7.568-10.553 15.108-19.018 15.266-8.318.152-10.993-4.934-20.504-4.934-9.508 0-12.479 4.776-20.354 5.086-8.172.31-14.395-8.185-19.616-15.724C15.822 94.961 7.669 66.8 18.616 47.791c5.438-9.44 15.158-15.417 25.707-15.571 8.024-.153 15.598 5.398 20.503 5.398 4.902 0 14.106-6.676 23.782-5.696 4.051.169 15.421 1.636 22.722 12.324-.587.365-13.566 7.921-13.425 23.639M82.272 21.719c4.338-5.251 7.258-12.563 6.462-19.836-6.254.251-13.816 4.167-18.301 9.416-4.02 4.647-7.54 12.087-6.591 19.216 6.971.54 14.091-3.542 18.43-8.796" /></svg></div><div class="ly-sk-bar"><div class="ly-sk-fill" style="width:75%"></div></div></div>
+<div class="ly-sk-item" tabindex="0" data-tip="Ubuntu · 45%"><div class="ly-sk-ico"><svg fill="currentColor" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path d="M24 0v128h80.662V0H24zm53.22 55.023c4.613 0 8.35 3.768 8.35 8.416 0 4.648-3.737 8.416-8.35 8.416-4.61 0-8.35-3.768-8.35-8.416 0-4.648 3.74-8.416 8.35-8.416zm-11.486.854c.653.004 1.309.033 1.965.086a12.213 12.213 0 00-2.533 6.824c-6.573.122-12.64 3.392-16.398 8.842a11.834 11.834 0 00-3.815-1.549 11.785 11.785 0 00-2.52-.271c-.21 0-.421.002-.634.015l-.004.002c4.872-8.663 14.146-14.006 23.94-13.949zm22.594 12.328a27.771 27.771 0 013.938 20.963 27.677 27.677 0 01-5.303 11.342l.002.006-.004-.004.002-.002a12.092 12.092 0 00-3.996-6.268 20.658 20.658 0 002.597-6.52 20.736 20.736 0 00-1.93-13.976 12.1 12.1 0 004.694-5.54zM42.443 73.48c4.611 0 8.35 3.768 8.35 8.416 0 4.648-3.739 8.416-8.35 8.416-4.612 0-8.35-3.768-8.35-8.416 0-4.648 3.738-8.416 8.35-8.416zm4.963 19.417c2.826 5.492 7.853 9.364 13.87 10.663l.001-.004a20.048 20.048 0 002.05.336 12.107 12.107 0 002.443 7.037 27.24 27.24 0 01-5.93-.614c-8.903-1.924-16.153-8.07-19.572-16.535a11.934 11.934 0 007.138-.883zm27.936 2.291c4.612 0 8.35 3.769 8.35 8.417 0 4.647-3.738 8.416-8.35 8.416-4.611 0-8.352-3.769-8.352-8.416 0-4.648 3.74-8.416 8.352-8.416z" /></svg></div><div class="ly-sk-bar"><div class="ly-sk-fill" style="width:45%"></div></div></div>
+<div class="ly-sk-item" tabindex="0" data-tip="Python · 35%"><div class="ly-sk-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="currentColor" d="M49.33 62h29.159C86.606 62 93 55.132 93 46.981V19.183c0-7.912-6.632-13.856-14.555-15.176-5.014-.835-10.195-1.215-15.187-1.191-4.99.023-9.612.448-13.805 1.191C37.098 6.188 35 10.758 35 19.183V30h29v4H23.776c-8.484 0-15.914 5.108-18.237 14.811-2.681 11.12-2.8 17.919 0 29.53C7.614 86.983 12.569 93 21.054 93H31V79.952C31 70.315 39.428 62 49.33 62zm-1.838-39.11c-3.026 0-5.478-2.479-5.478-5.545 0-3.079 2.451-5.581 5.478-5.581 3.015 0 5.479 2.502 5.479 5.581-.001 3.066-2.465 5.545-5.479 5.545zm74.789 25.921C120.183 40.363 116.178 34 107.682 34H97v12.981C97 57.031 88.206 65 78.489 65H49.33C41.342 65 35 72.326 35 80.326v27.8c0 7.91 6.745 12.564 14.462 14.834 9.242 2.717 17.994 3.208 29.051 0C85.862 120.831 93 116.549 93 108.126V97H64v-4h43.682c8.484 0 11.647-5.776 14.599-14.66 3.047-9.145 2.916-17.799 0-29.529zm-41.955 55.606c3.027 0 5.479 2.479 5.479 5.547 0 3.076-2.451 5.579-5.479 5.579-3.015 0-5.478-2.502-5.478-5.579 0-3.068 2.463-5.547 5.478-5.547z" /></svg></div><div class="ly-sk-bar"><div class="ly-sk-fill" style="width:35%"></div></div></div>
+<div class="ly-sk-item" tabindex="0" data-tip="C++ · 25%"><div class="ly-sk-ico"><svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"> <path fill="currentColor" d="M63.443 0c-1.782 0-3.564.39-4.916 1.172L11.594 28.27C8.89 29.828 6.68 33.66 6.68 36.78v54.197c0 1.562.55 3.298 1.441 4.841l-.002.002c.89 1.543 2.123 2.89 3.475 3.672l46.931 27.094c2.703 1.562 7.13 1.562 9.832 0h.002l46.934-27.094c1.352-.78 2.582-2.129 3.473-3.672.89-1.543 1.441-3.28 1.441-4.843V36.779c0-1.557-.55-3.295-1.441-4.838v-.002c-.891-1.545-2.121-2.893-3.473-3.67L68.359 1.173C67.008.39 65.226 0 63.443 0zm.002 26.033c13.465 0 26.02 7.246 32.77 18.91l-16.38 9.479c-3.372-5.836-9.66-9.467-16.39-9.467-10.432 0-18.922 8.49-18.922 18.924S53.013 82.8 63.445 82.8c6.735 0 13.015-3.625 16.395-9.465l16.375 9.477c-6.746 11.662-19.305 18.91-32.77 18.91-20.867 0-37.843-16.977-37.843-37.844s16.976-37.844 37.843-37.844v-.002zM92.881 57.57h4.201v4.207h4.203v4.203h-4.203v4.207h-4.201V65.98h-4.207v-4.203h4.207V57.57zm15.765 0h4.208v4.207h4.203v4.203h-4.203v4.207h-4.208V65.98h-4.205v-4.203h4.205V57.57z" /> </svg></div><div class="ly-sk-bar"><div class="ly-sk-fill" style="width:25%"></div></div></div>
 </div>
-<div class="ly-sec">
-<div class="ly-sec-t">计算机</div>
-<div class="ly-tags">
-<span class="ly-tag"><i class="fab fa-python"></i>Python</span>
-<span class="ly-tag"><i class="fas fa-code"></i>C++</span>
-<span class="ly-tag"><i class="fab fa-windows"></i>Windows</span>
-<span class="ly-tag"><i class="fab fa-apple"></i>macOS</span>
-<span class="ly-tag"><i class="fab fa-ubuntu"></i>Ubuntu</span>
+</li>
+<li>
+<span class="ly-sk-hd"><i class="fas fa-language"></i><strong>阅读与写作</strong></span>
+<div class="ly-sk-grid">
+<div class="ly-sk-item" tabindex="0" data-tip="中文 · 90%"><div class="ly-sk-ico"><span class="ly-sk-glyph">中</span></div><div class="ly-sk-bar"><div class="ly-sk-fill" style="width:90%"></div></div></div>
+<div class="ly-sk-item" tabindex="0" data-tip="English · 75%"><div class="ly-sk-ico"><span class="ly-sk-glyph">En</span></div><div class="ly-sk-bar"><div class="ly-sk-fill" style="width:75%"></div></div></div>
+<div class="ly-sk-item" tabindex="0" data-tip="한국어 · 35%"><div class="ly-sk-ico"><span class="ly-sk-glyph">한</span></div><div class="ly-sk-bar"><div class="ly-sk-fill" style="width:35%"></div></div></div>
 </div>
-</div>
-<div class="ly-sec">
-<div class="ly-sec-t">其余技能</div>
-<div class="ly-tags">
-<span class="ly-tag"><i class="fas fa-microphone-lines"></i>主持与朗诵</span>
-<span class="ly-tag"><i class="fas fa-music"></i>声乐</span>
-<span class="ly-tag"><i class="fas fa-heart"></i>舞蹈</span>
-<span class="ly-tag"><i class="fas fa-comments"></i>辩论</span>
-<span class="ly-tag"><i class="fas fa-camera"></i>摄影</span>
-</div>
-</div>
-<div class="ly-sec">
-<div class="ly-sec-t">阅读与写作</div>
-<div class="ly-tags">
-<span class="ly-tag"><i class="fas fa-language"></i>中文</span>
-<span class="ly-tag"><i class="fas fa-language"></i>English</span>
-<span class="ly-tag"><i class="fas fa-language"></i>한국어</span>
-</div>
-</div>
-</div></div><div class="card-widget card-device" id="card-device"><div class="item-headline"><i class="fas fa-laptop"></i><span>我的设备</span></div><div class="item-content"><div class="ly-dev">
-<div class="ly-dev-i">
-<i class="fas fa-desktop"></i>
-<div>
-<div class="ly-dev-n">计算机 · BEVERLY ITX主机</div>
-<div class="ly-dev-m">Ryzen 7 5700X + Radeon RX 6600 XT</div>
-</div>
-</div>
-<div class="ly-dev-i">
-<i class="fas fa-laptop"></i>
-<div>
-<div class="ly-dev-n">笔记本 · HUAWEI MateBook E Go</div>
-<div class="ly-dev-m">Snapdragon 8cx Gen 3</div>
-</div>
-</div>
-<div class="ly-dev-i">
-<i class="fas fa-tablet"></i>
-<div>
-<div class="ly-dev-n">平板电脑 · REDMI K Pad</div>
-<div class="ly-dev-m">Mediatek Dimensity 9400 Plus</div>
-</div>
-</div>
-<div class="ly-dev-i">
-<i class="fas fa-mobile-screen"></i>
-<div>
-<div class="ly-dev-n">手机 · vivo S50 Pro mini</div>
-<div class="ly-dev-m">Snapdragon 8 Gen 5</div>
-</div>
-</div>
-<div class="ly-dev-i">
-<i class="fas fa-camera"></i>
-<div>
-<div class="ly-dev-n">相机 · SONY A5000</div>
-<div class="ly-dev-m">SONY E PZ 16-50mm F3.5-5.6 OSS</div>
-</div>
-</div>
-<div class="ly-dev-i">
-<i class="fas fa-microphone"></i>
-<div>
-<div class="ly-dev-n">采编设备 · DJI Pocket 3</div>
-<div class="ly-dev-m">with DJI Mic mini</div>
-</div>
-</div>
-</div>
+</li>
+<li>
+<span class="ly-sk-hd"><i class="fas fa-star"></i><strong>其余技能</strong></span>
+<div class="ly-sk-text">主持与朗诵、声乐、舞蹈、辩论、摄影</div>
+</li>
+</ul>
+</div></div><div class="card-widget card-device" id="card-device"><div class="item-headline"><i class="fas fa-laptop"></i><span>我的设备</span></div><div class="item-content"><ul class="ly-dev-list">
+<li>
+<div class="ly-dev-main"><i class="fas fa-desktop"></i><strong>计算机</strong><span>BEVERLY ITX主机</span></div>
+<div class="ly-dev-sub">Ryzen 7 5700X + Radeon RX 6600 XT</div>
+</li>
+<li>
+<div class="ly-dev-main"><i class="fas fa-laptop"></i><strong>笔记本</strong><span>HUAWEI MateBook E Go</span></div>
+<div class="ly-dev-sub">Snapdragon 8cx Gen 3</div>
+</li>
+<li>
+<div class="ly-dev-main"><i class="fas fa-tablet-screen-button"></i><strong>平板电脑</strong><span>REDMI K Pad</span></div>
+<div class="ly-dev-sub">Mediatek Dimensity 9400 Plus</div>
+</li>
+<li>
+<div class="ly-dev-main"><i class="fas fa-mobile-screen"></i><strong>手机</strong><span>vivo S50 Pro mini</span></div>
+<div class="ly-dev-sub">Snapdragon 8 Gen 5</div>
+</li>
+<li>
+<div class="ly-dev-main"><i class="fas fa-camera"></i><strong>相机</strong><span>SONY A5000</span></div>
+<div class="ly-dev-sub">SONY E PZ 16-50mm F3.5-5.6 OSS</div>
+</li>
+<li>
+<div class="ly-dev-main"><i class="fas fa-microphone"></i><strong>采编设备</strong><span>DJI Pocket 3</span></div>
+<div class="ly-dev-sub">with DJI Mic mini</div>
+</li>
+</ul>
 </div></div><div class="card-widget card-links" id="card-links"><div class="item-headline"><i class="fas fa-link"></i><span>友情链接</span></div><div class="item-content"><div class="ly-flinks">
 <a class="ly-flink" href="https://siao.dev" target="_blank" rel="noopener">
 <img src="https://aloe-assets.23451234.xyz/2026/01/avatar.png" alt="">
@@ -383,7 +372,7 @@
         </li>
       
     </ul>
-  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">1</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-11-22T17:35:39.134Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 泠潇</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.2"></script><script src="/js/main.js?v=5.7.2"></script><div class="js-pjax"><script>window.typedJSFn = {
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">1</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-11-28T20:11:58.191Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 泠潇</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.2"></script><script src="/js/main.js?v=5.7.2"></script><div class="js-pjax"><script>window.typedJSFn = {
   _seq: 0,
   init: str => {
     window.typed = new Typed('#subtitle', Object.assign({
