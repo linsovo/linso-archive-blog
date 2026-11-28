@@ -117,8 +117,8 @@ Remove-Item Env:HTTP_PROXY,Env:HTTPS_PROXY,Env:http_proxy,Env:https_proxy,Env:AL
 | 类名 | 用途 |
 |---|---|
 | `.ly-card` `.ly-sign` `.ly-links` `.ly-row` | 资料卡内部结构（签名、三按钮、信息行） |
-| `.ly-sec` `.ly-sec-t` `.ly-tags` `.ly-tag` | 技能卡的分组、标签胶囊 |
-| `.ly-dev` `.ly-dev-i` `.ly-dev-n` `.ly-dev-m` | 设备卡的条目 |
+| `.ly-sk-list` `.ly-sk-hd` `.ly-sk-grid` `.ly-sk-item` `.ly-sk-bar` `.ly-sk-fill` `.ly-sk-glyph` | 技能卡的分组列表、单色大图标、熟练度进度条与悬停气泡 |
+| `.ly-dev-list` `.ly-dev-main` `.ly-dev-sub` | 设备卡的圆点列表与两行条目 |
 | `.ly-flinks` `.ly-flink` | 友链卡的两列网格 |
 | `.ly-two-cards` | 技能 + 设备两栏并排容器 |
 | `.card-widget.card-info` 相关 | 资料卡横排（CSS Grid：头像左 76px、名字右） |
@@ -329,3 +329,4 @@ description: 首页卡片上显示的一句话摘要
 | 2026-11-23 | 撰写本维护手册 |
 | 2026-11-23 | 修复：favicon 404（补 `source/img/favicon.png`，由头像缩放生成）；部署提交信息乱码（`now()` 改用 Luxon token）；首篇 3 处未闭合 `<span>`；代码块语言标注 |
 | 2026-11-23 | 按实况修正手册：首页 10 篇/页、Node v24、卡片降级行为、`hexo new` 用法、PowerShell 清代理命令 |
+| 2026-11-29 | 重构「我的技能」「我的设备」卡片 UI：改为内联单色 SVG 大图标 + 渐变熟练度进度条 + 悬停气泡，阅读与写作改为无框单字大图标，设备改为两行圆点列表 |
